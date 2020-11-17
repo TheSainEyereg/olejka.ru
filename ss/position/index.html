@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Position test</title>
+    <link rel="shortcut icon" href="/assets/icons/favB.svg">
+    <script src="/assets/js/page.js"></script>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        	background-color: var(--first-color);
+            color: var(--second-color);
+            width: 100%;
+            height: 100%;
+            transition: .3s;
+        }
+
+
+        .cont1, .cont2, .cont3, .cont4 {
+            width: 250px;
+            height: 250px;
+            margin: 0;
+            background-color: red;
+        }
+
+        .cont1 {
+            position: relative;
+            float: left;
+        }
+        .cont2 {
+            position: relative;
+            float: right;
+        }
+        .cont3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .cont4 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+        .box1, .box2, .box3, .box4 {
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            background-color: green;
+        }
+
+        .box1 {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .box2 {
+            position: relative;
+            float: right;
+            left: 10px;
+            top: -10px;
+
+        }
+        .box3 {
+            position: absolute;
+            left: 10px;
+            top: -10px;
+
+        }
+        .box4 {
+            position: relative;
+            float: right;
+            top: -10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="cont1">
+        <div class="box1">
+
+        </div>
+    </div>
+
+    <div class="cont2">
+        <div class="box2">
+
+        </div>
+    </div>
+
+    <div class="cont3">
+        <div class="box3">
+
+        </div>
+    </div>
+
+    <div class="cont4">
+        <div class="box4">
+
+        </div>
+    </div>
+
+    
+</body>
