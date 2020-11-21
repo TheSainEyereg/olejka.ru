@@ -98,7 +98,8 @@ footer p, header p{
     left: 2px;
     overflow: hidden;
     position: absolute;
-    width: max-content;
+    width: fit-content;
+    width: -moz-fit-content;
     transition: .3s;
     text-shadow: -1.5px 0 red;
     top: 0;
@@ -113,7 +114,8 @@ footer p, header p{
     left: -2px;
     overflow: hidden;
     position: absolute;
-    width: max-content;
+    width: fit-content;
+    width: -moz-fit-content;
     transition: .3s;
     text-shadow: 1.5px 0 blue;
     top: 0;
@@ -315,7 +317,8 @@ main .plangs {
 	position: relative;
 	display: flex;
 	list-style-type: none;
-	width: max-content; 
+  width: fit-content;
+  width: -moz-fit-content; 
 	padding: 10px;
 	list-style: none;
 	margin: auto;
@@ -341,7 +344,8 @@ main .plangs {
 div.attention {
 	color: #fefefe;
 	padding: 25px;
-	width: max-content;
+  width: fit-content;
+  width: -moz-fit-content;
 	margin: auto;
 	background: linear-gradient(47deg, rgba(246,134,134,1) 0%, rgba(255,0,0,1) 100%);
 	text-align: center;
@@ -354,7 +358,8 @@ div.warning {
 	margin: 20px;
 	padding: 25px;
 	position: absolute;
-	width: max-content;
+  width: fit-content;
+  width: -moz-fit-content;
 	margin: auto;
 	background: linear-gradient(47deg, rgba(255,247,81,1) 0%, rgba(255,152,0,1) 100%);
 	text-align: center;
