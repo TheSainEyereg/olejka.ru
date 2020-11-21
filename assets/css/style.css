@@ -85,7 +85,8 @@ footer p, header p{
 
 /* Real glitch effect */
 .glitch {
-	position: relative;
+  position: relative;
+  user-select: none;
 }
   
 .glitch:after {
