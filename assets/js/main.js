@@ -14,6 +14,8 @@ const volume_default =  0.5;
 //----------------------------------Core----------------------------------\\
 let d = document;
 let w = window;
+let parser = new DOMParser
+
 
 let debug = {
     enabled: null,
@@ -132,6 +134,27 @@ let anim = {
     }
 }
 
+let get = {
+    json: async (url) => {
+        let response = await fetch(url);
+        if (response.ok) {
+            let got = await response.json();
+            return got;
+          } else {
+            console.error("ERROR "+url+" "+ response.status);
+          }
+    },
+    text: async (url) => {
+        let response = await fetch(url);
+        if (response.ok) {
+            let got = await response.text();
+            return got;
+          } else {
+            console.error("ERROR "+url+" "+ response.status);
+          }
+    }
+}
+
 
 //----------------------------------Main----------------------------------\\
 debug.initializate();
@@ -157,6 +180,14 @@ $(() => {
             anim.show($("#c2"), 900, 250);
             anim.show($("#c3"), 900, 500);
             $("#theme").click(() => {theme.change()});
+            let img;
+            debug.log("Point 1")
+            get.text("https://www.sololearn.com/Profile/4746232").then((m) => {
+                img = $(parser.parseFromString(m, "text/html")).find(".course img")
+                for (let i = 0; i < 5; i++) {
+                    $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\">"))
+                }
+            })
             break;
 
         default:

@@ -264,7 +264,6 @@ header {
 
 header nav {
   position: relative;
-  float: right;
 }
 
 header nav svg {
@@ -278,12 +277,19 @@ header nav svg:hover {
   cursor: pointer;
 }
 
+
+
 main {
 	text-align: center;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
+}
+
+main .plangs {
+  display: flex;
+  list-style: none;
 }
 
 #c1 {
