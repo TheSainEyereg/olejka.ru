@@ -140,6 +140,12 @@ debug.log("Build "+info.build+"v"+info.version, "#fff","#000");
 $(() => {
     debug.log("DOM loaded", "#fff","#000");
     theme.initializate();
+
+    let script_check = async () => {
+        let response = await fetch("page.js");
+        return response.ok;
+    }
+
     switch (w.location.pathname) {
         case "/":
             window.location.replace("/p/");
@@ -150,11 +156,15 @@ $(() => {
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
             anim.show($("#c3"), 900, 500);
-            $("#theme")[0].addEventListener("click", () => {theme.change()});
+            $("#theme").click(() => {theme.change()});
             break;
 
         default:
-            debug.log("Script for this page is not described", "#fff","#000");
+            if (script_check) {
+                debug.log("Found page.js script for this page", "#fff","#000");
+            } else {
+                debug.log("Script for this page is not described", "#fff","#000");
+            }
             break;
     }
 })
