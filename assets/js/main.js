@@ -8,13 +8,15 @@ const dark = "#0a0a0a";
 const light = "#fefefe";
 const theme_default = "dark";
 const debug_default = "0"; //Not true or false because localStorage cannot store boolean values
+const debug_time = true;
 const language_default = "en-US";
 const volume_default =  0.5;
 
+const vk_api_key = "4d58f9724d58f9724d58f972444d2dea3144d584d58f97212e299cd9421c7e39101d599"; //I dont really care about it (Its only for getting my VK profile pic)
 //----------------------------------Core----------------------------------\\
 let d = document;
 let w = window;
-let parser = new DOMParser
+let parser = new DOMParser;
 
 
 let debug = {
@@ -34,7 +36,12 @@ let debug = {
     },
     log(text, color, background) {
         if (this.enabled == "1") {
-            console.log("%c "+text+" ", "color: "+color+"; background: "+background);
+            if (!debug_time) {
+                console.log("%c "+text+" ", "color: "+color+"; background: "+background);
+            } else {
+                let date = new Date;
+                console.log("["+date.getMinutes()+":"+date.getSeconds()+":"+date.getMilliseconds()+"]:"+"%c "+text+" ", "color: "+color+"; background: "+background);
+            }
         }
     }
 };
@@ -155,10 +162,33 @@ let get = {
     }
 }
 
+let data = {
+    data: null,
+    get(url, key) {
+        debug.log("Sent JSON request \""+url+"\"");
+        get.json(url).then((m) => {this.data = m; if (key!=undefined) {this.save(key)}})
+    },
+    save(key) {localStorage.setItem(key, JSON.stringify(this.data))},
+    load(key) {this.data = localStorage.getItem(key)},
+    del(key) {localStorage.removeItem(key)},
+    vk: {
+        get(url) {
+            debug.log("Sent VK request \""+url+"\"");
+            $("head").append($("<script id=\"TEMP\" type=\"text/javascript\"></script>").attr("src", url));
+        },
+        catch(ansv) {
+            debug.log("Cached VK ansver \""+JSON.stringify(ansv.response[0])+"\"");
+            data.data = ansv.response[0];
+            $("#TEMP").remove();
+        }
+    }
+}
 
 //----------------------------------Main----------------------------------\\
 debug.initializate();
 debug.log("Build "+info.build+"v"+info.version, "#fff","#000");
+data.get("https://api.bigdatacloud.net/data/client-info", "data")
+data.vk.send("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key+"&v=5.124&callback=data.vk.catch")
 
 $(() => {
     debug.log("DOM loaded", "#fff","#000");
