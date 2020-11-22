@@ -185,7 +185,7 @@ $(() => {
             get.text("https://www.sololearn.com/Profile/4746232").then((m) => {
                 img = $(parser.parseFromString(m, "text/html")).find(".course img")
                 for (let i = 0; i < 5; i++) {
-                    $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\">"))
+                    $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
                 }
             })
             break;
