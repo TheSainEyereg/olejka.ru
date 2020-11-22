@@ -12,7 +12,7 @@ const debug_time = true;
 const language_default = "en-US";
 const volume_default =  0.5;
 
-const vk_api_key = "4d58f9724d58f9724d58f972444d2dea3144d584d58f97212e299cd9421c7e39101d599"; //I dont really care about it (Its only for getting my VK profile pic)
+const vk_api_key = "4d58f9724d58f9724d58f972444d2dea3144d584d58f97212e299cd9421c7e39101d599"; //I dont really care about it (Its SERVICE key for getting my VK profile pic)
 //----------------------------------Core----------------------------------\\
 let d = document;
 let w = window;
@@ -146,6 +146,7 @@ let get = {
         let response = await fetch(url);
         if (response.ok) {
             let got = await response.json();
+            debug.log("Got JSON from "+url+" ("+response.status+")")
             return got;
           } else {
             console.error("ERROR "+url+" "+ response.status);
@@ -155,6 +156,7 @@ let get = {
         let response = await fetch(url);
         if (response.ok) {
             let got = await response.text();
+            debug.log("Got text from "+url+" ("+response.status+")")
             return got;
           } else {
             console.error("ERROR "+url+" "+ response.status);
@@ -188,7 +190,6 @@ let data = {
 debug.initializate();
 debug.log("Build "+info.build+"v"+info.version, "#fff","#000");
 data.get("https://api.bigdatacloud.net/data/client-info", "data")
-data.vk.send("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key+"&v=5.124&callback=data.vk.catch")
 
 $(() => {
     debug.log("DOM loaded", "#fff","#000");
@@ -205,16 +206,15 @@ $(() => {
             break;
 
         case "/p/":
+            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key+"&v=5.124&callback=data.vk.catch")
             anim.title.anim("Welcome",2200, 0)
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
             anim.show($("#c3"), 900, 500);
             $("#theme").click(() => {theme.change()});
-            let img;
-            debug.log("Point 1")
             get.text("https://www.sololearn.com/Profile/4746232").then((m) => {
-                img = $(parser.parseFromString(m, "text/html")).find(".course img")
-                for (let i = 0; i < 5; i++) {
+                let img = $(parser.parseFromString(m, "text/html")).find(".course img")
+                for (let i = 0; i < img.length; i++) {
                     $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
                 }
             })
