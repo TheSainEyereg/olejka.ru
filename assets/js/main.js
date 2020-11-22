@@ -174,14 +174,21 @@ let data = {
     load(key) {this.data = localStorage.getItem(key)},
     del(key) {localStorage.removeItem(key)},
     vk: {
-        get(url) {
+        func: null,
+        get(url, func) {
+            this.send(url);
+            this.func = func;
+        },
+        send(url) {
             debug.log("Sent VK request \""+url+"\"");
-            $("head").append($("<script id=\"TEMP\" type=\"text/javascript\"></script>").attr("src", url));
+            $("head").append($("<script id=\"TEMP\" type=\"text/javascript\"></script>").attr("src", url+"&v=5.124&callback=data.vk.catch"));
         },
         catch(ansv) {
             debug.log("Cached VK ansver \""+JSON.stringify(ansv.response[0])+"\"");
             data.data = ansv.response[0];
+            this.got=true;
             $("#TEMP").remove();
+            this.func();
         }
     }
 }
@@ -206,7 +213,7 @@ $(() => {
             break;
 
         case "/p/":
-            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key+"&v=5.124&callback=data.vk.catch")
+            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").attr("src", data.data.photo_max_orig)})
             anim.title.anim("Welcome",2200, 0)
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
@@ -218,6 +225,8 @@ $(() => {
                     $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
                 }
             })
+            
+            
             break;
 
         default:
