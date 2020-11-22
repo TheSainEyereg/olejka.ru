@@ -1,6 +1,6 @@
 //----------------------------------Sett----------------------------------\\
 const info = {
-    build: "031120",
+    build: "231120",
     version: 1
 }
 
@@ -11,8 +11,9 @@ const debug_default = "0"; //Not true or false because localStorage cannot store
 const debug_time = true;
 const language_default = "en-US";
 const volume_default =  0.5;
-
 const vk_api_key = "4d58f9724d58f9724d58f972444d2dea3144d584d58f97212e299cd9421c7e39101d599"; //I dont really care about it (Its SERVICE key for getting my VK profile pic)
+const vk_api_ver = 5.124;
+
 //----------------------------------Core----------------------------------\\
 let d = document;
 let w = window;
@@ -170,9 +171,9 @@ let data = {
         debug.log("Sent JSON request \""+url+"\"");
         get.json(url).then((m) => {this.data = m; if (key!=undefined) {this.save(key)}})
     },
-    save(key) {localStorage.setItem(key, JSON.stringify(this.data))},
-    load(key) {this.data = localStorage.getItem(key)},
-    del(key) {localStorage.removeItem(key)},
+    save(key) {sessionStorage.setItem(key, JSON.stringify(this.data))},
+    load(key) {this.data = sessionStorage.getItem(key)},
+    del(key) {sessionStorage.removeItem(key)},
     vk: {
         func: null,
         get(url, func) {
@@ -181,7 +182,7 @@ let data = {
         },
         send(url) {
             debug.log("Sent VK request \""+url+"\"");
-            $("head").append($("<script id=\"TEMP\" type=\"text/javascript\"></script>").attr("src", url+"&v=5.124&callback=data.vk.catch"));
+            $("head").append($("<script id=\"TEMP\" type=\"text/javascript\"></script>").attr("src", url+"&v="+vk_api_ver+"&callback=data.vk.catch"));
         },
         catch(ansv) {
             debug.log("Cached VK ansver \""+JSON.stringify(ansv.response[0])+"\"");
@@ -189,6 +190,7 @@ let data = {
             this.got=true;
             $("#TEMP").remove();
             this.func();
+            this.func = null;
         }
     }
 }
@@ -213,7 +215,6 @@ $(() => {
             break;
 
         case "/p/":
-            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").attr("src", data.data.photo_max_orig)})
             anim.title.anim("Welcome",2200, 0)
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
@@ -224,8 +225,8 @@ $(() => {
                 for (let i = 0; i < img.length; i++) {
                     $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
                 }
-            })
-            
+            });
+            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").attr("src", data.data.photo_max_orig)});
             
             break;
 
