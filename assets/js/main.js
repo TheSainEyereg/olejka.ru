@@ -68,7 +68,7 @@ let theme = {
                     d.documentElement.style.setProperty("--first-color", light);
                     d.documentElement.style.setProperty("--second-color", dark);
                     break;
-            
+
                 default:
                     d.documentElement.style.setProperty("--first-color", dark);
                     d.documentElement.style.setProperty("--second-color", light);
@@ -81,9 +81,9 @@ let theme = {
     change() {
         switch (this.current) {
             case "light":
-                this.set("dark");      
+                this.set("dark");
                 break;
-        
+
             default:
                 this.set("light");
                 break;
@@ -118,7 +118,7 @@ let anim = {
                         debug.log("Title counter complete", "#00c800");
                     }
                     d.title = cur;
-                    cur--; 
+                    cur--;
                 }, tick)
             },timeout)
         },
@@ -227,7 +227,7 @@ $(() => {
                 }
             });
             data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").attr("src", data.data.photo_max_orig)});
-            
+
             break;
 
         default:
