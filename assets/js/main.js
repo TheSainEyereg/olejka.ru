@@ -172,7 +172,7 @@ let data = {
         get.json(url).then((m) => {this.data = m; if (key!=undefined) {this.save(key)}})
     },
     save(key) {sessionStorage.setItem(key, JSON.stringify(this.data))},
-    load(key) {this.data = sessionStorage.getItem(key)},
+    load(key) {this.data = JSON.parse(sessionStorage.getItem(key))},
     del(key) {sessionStorage.removeItem(key)},
     vk: {
         func: null,
