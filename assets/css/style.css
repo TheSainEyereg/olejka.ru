@@ -351,6 +351,11 @@ header nav ul li a:focus::after {
 	transform: translateY(0px);
 }
 
+header .me {
+  padding: 5px;
+  margin: 2% auto;
+}
+
 header .me * {
   width: fit-content;
   margin: auto;
@@ -366,13 +371,13 @@ header .me img {
 
 header .me h1 {
   font-size: 60px;
-  margin-bottom: 10px;
+  margin-top: 2%;
 }
 
 main {
   text-align: center;
   width: fit-content;
-  margin: auto;
+  margin: 5% auto;
 }
 
 main .plangs {
