@@ -37,10 +37,6 @@ a:hover {
   transition: .0s;
 }
 
-p {
-  transition: .3s;
-}
-
 table {
 	border-collapse: collapse;
 	width: 75%;
@@ -286,13 +282,11 @@ header nav a:hover{
 
 header nav svg {
   transform: translateY(-25%);
-	width: 60px;
-	height: 60px;
+	height: 50px;
 }
 
 header nav svg:hover {/*
-	width: 65px;
-  height: 65px;*/
+  height: 55px;*/
   color: var(--second-color);
   cursor: pointer;
 }
@@ -308,7 +302,10 @@ header nav ul li {
 }
 
 header nav ul li:last-child {
+  position: absolute;
   margin-right: 5px;
+  right: 0;
+  user-select: none;
 }
 
 header nav ul li a {
@@ -357,6 +354,7 @@ header .me {
 }
 
 header .me * {
+  user-select: none;
   width: fit-content;
   margin: auto;
 }
@@ -378,6 +376,7 @@ main {
   text-align: center;
   width: fit-content;
   margin: 5% auto;
+  font-size: 17px;
 }
 
 main .plangs {
@@ -399,7 +398,8 @@ main .plangs img {
 	list-style-type: none;
   width: fit-content;
   width: -moz-fit-content; 
-	padding: 10px;
+  padding: 10px;
+  font-size: 15px;
 	list-style: none;
 	margin: auto;
 }
@@ -464,6 +464,7 @@ footer.new {
 }
 
 footer.new p {
+  transition: .3s;
 	margin: 0;
 }
 
