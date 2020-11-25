@@ -226,7 +226,7 @@ $(() => {
                     $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
                 }
             });
-            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").attr("src", data.data.photo_max_orig)});
+            data.vk.get("https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online&access_token="+vk_api_key, () => {$(".face").append($("<img>").attr("src", data.data.photo_max_orig))});
 
             break;
 

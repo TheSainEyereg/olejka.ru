@@ -277,10 +277,10 @@ header nav a{
 }
 
 header nav a:hover{
-  color: var(--second-color);
+  color: var(--second-color);/*
   background: -webkit-linear-gradient(45deg, var(--grad-first) 50%, var(--grad-second) 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;*/
   transition: .3s;
 }
 
@@ -293,8 +293,8 @@ header nav svg {
 header nav svg:hover {/*
 	width: 65px;
   height: 65px;*/
+  color: var(--second-color);
   cursor: pointer;
-  fill: url(#gradient)
 }
 
 header nav ul {
@@ -321,7 +321,7 @@ header nav ul li a {
 	letter-spacing: 1px;
 	font-weight: 400;
 	text-shadow: 0 0 1px rgba(255,255,255,0.3);
-	font-size: 1.35em;
+	font-size: 1em;
   padding: 0 0 10px;
 }
 
@@ -351,12 +351,28 @@ header nav ul li a:focus::after {
 	transform: translateY(0px);
 }
 
+header .me * {
+  width: fit-content;
+  margin: auto;
+}
+
+header .me img {
+  height: 150px;
+  width: 150px;
+  border: dashed;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+header .me h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
 main {
-	text-align: center;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
+  text-align: center;
+  width: fit-content;
+  margin: auto;
 }
 
 main .plangs {
@@ -364,9 +380,12 @@ main .plangs {
   list-style: none;
 }
 
-#c1 {
-  font-size: 60px;
-  margin-bottom: 10px;
+main .plangs li {
+  margin: 0px 10px;
+}
+
+main .plangs img {
+  height: 50px;
 }
 
 .social ul {
