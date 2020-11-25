@@ -198,11 +198,11 @@ let data = {
 //----------------------------------Main----------------------------------\\
 debug.initializate();
 debug.log("Build "+info.build+"v"+info.version, "#fff","#000");
-data.get("https://api.bigdatacloud.net/data/client-info", "data")
 
 $(() => {
     debug.log("DOM loaded", "#fff","#000");
     theme.initializate();
+    data.get("https://api.bigdatacloud.net/data/client-info", "data")
 
     let script_check = async () => {
         let response = await fetch("page.js");
@@ -219,6 +219,7 @@ $(() => {
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
             anim.show($("#c3"), 900, 500);
+            anim.show($("#c4"), 900, 750);
             $("#theme").click(() => {theme.change()});
             get.text("https://www.sololearn.com/Profile/4746232").then((m) => {
                 let img = $(parser.parseFromString(m, "text/html")).find(".course img")
