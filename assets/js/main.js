@@ -18,7 +18,6 @@ const vk_api_ver = 5.124;
 let d = document;
 let w = window;
 
-
 let debug = {
     enabled: null,
     initializate() {
