@@ -1,6 +1,6 @@
 //----------------------------------Sett----------------------------------\\
 const info = {
-    build: "231120",
+    build: "271120",
     version: 1
 }
 
@@ -17,7 +17,6 @@ const vk_api_ver = 5.124;
 //----------------------------------Core----------------------------------\\
 let d = document;
 let w = window;
-let parser = new DOMParser;
 
 
 let debug = {
@@ -222,6 +221,7 @@ $(() => {
             anim.show($("#c4"), 900, 750);
             $("#theme").click(() => {theme.change()});
             get.text("https://www.sololearn.com/Profile/4746232").then((m) => {
+                let parser = new DOMParser;
                 let img = $(parser.parseFromString(m, "text/html")).find(".course img")
                 for (let i = 0; i < img.length; i++) {
                     $(".plangs").append($("<li></li>").html("<img src=\"/assets/icons/langs/"+img.eq(i).attr("alt")+".svg\" alt=\""+img.eq(i).attr("alt")+"\">"))
