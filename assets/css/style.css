@@ -561,3 +561,7 @@ footer.new p {
 		margin-right: 15px;
 	}
 }
+
+@media screen and (max-width: 256px) {
+
+}
