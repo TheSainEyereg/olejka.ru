@@ -6,9 +6,7 @@
 
 :root {
 	--first-color: #0a0a0a;
-  --second-color: #fefefe;
-  --grad-first: #3d73dd;
-  --grad-second: #00d4ff;
+	--second-color: #fefefe;
 }
 
 html, body{
@@ -35,6 +33,10 @@ a {
 a:hover {
   color: #3bdeff;
   transition: .0s;
+}
+
+p {
+  transition: .3s;
 }
 
 table {
@@ -73,7 +75,7 @@ footer p, header p{
 }
 
 .grad {
-	background: linear-gradient(45deg, var(--grad-first) 50%, var(--grad-second) 100%);
+	background: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
 	color: var(--second-color);
 }
 
@@ -263,161 +265,59 @@ header {
 }
 
 header nav {
-  font-size: 30px;
   position: relative;
-}
-
-header nav a{
-	color: var(--second-color);
-  transition: .3s;
-}
-
-header nav a:hover{
-  color: var(--second-color);/*
-  background: -webkit-linear-gradient(45deg, var(--grad-first) 50%, var(--grad-second) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;*/
-  transition: .3s;
+  float: right;
 }
 
 header nav svg {
-  transform: translateY(-25%);
-	height: 50px;
+	width: 60px;
+	height: 60px;
 }
 
-header nav svg:hover {/*
-  height: 55px;*/
-  color: var(--second-color);
+header nav svg:hover {
+	width: 65px;
+  height: 65px;
   cursor: pointer;
 }
 
-header nav ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
-
-header nav ul li {
-  margin-left: 5px;
-  margin-right: 10px;
-}
-
-header nav ul li:last-child {
-  position: absolute;
-  margin-right: 5px;
-  right: 0;
-  user-select: none;
-}
-
-header nav ul li a {
-	position: relative;
-	display: inline-block;
-	margin: 15px 25px;
-	outline: none;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 400;
-	text-shadow: 0 0 1px rgba(255,255,255,0.3);
-	font-size: 1em;
-  padding: 0 0 10px;
-}
-
-header nav ul li a::after {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: 100%;
-	height: 1px;
-	background: var(--second-color);
-	content: '';
-	opacity: 0;
-	-webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
-	transition: height 0.3s, opacity 0.3s, transform 0.3s;
-	-webkit-transform: translateY(-10px);
-	-moz-transform: translateY(-10px);
-	transform: translateY(-10px);
-}
-
-header nav ul li a:hover::after,
-header nav ul li a:focus::after {
-	height: 5px;
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	transform: translateY(0px);
-}
-
-header .me {
-  padding: 5px;
-  margin: 2% auto;
-}
-
-header .me * {
-  user-select: none;
-  width: fit-content;
-  margin: auto;
-}
-
-header .me img {
-  height: 150px;
-  width: 150px;
-  border: dashed;
-  border-radius: 50%;
-  padding: 3px;
-}
-
-header .me h1 {
-  font-size: 60px;
-  margin-top: 2%;
-}
-
 main {
-  text-align: center;
-  width: fit-content;
-  margin: 5% auto;
-  font-size: 17px;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
 }
 
-main .plangs {
-  display: flex;
-  list-style: none;
+#c1 {
+  font-size: 60px;
+  margin-bottom: 10px;
 }
 
-main .plangs li {
-  margin: 0px 10px;
-}
-
-main .plangs img {
-  height: 50px;
-}
-
-.social ul {
+#c2 {
 	position: relative;
 	display: flex;
 	list-style-type: none;
-  width: fit-content;
-  width: -moz-fit-content; 
-  padding: 10px;
-  font-size: 15px;
+	width: fit-content;
+    width: -moz-fit-content; 
+	padding: 10px;
 	list-style: none;
 	margin: auto;
 }
-.social ul li {
+
+#c2 li {
 	margin-right: 20px;
 }
 
-.social ul li:last-child {
+#c2 li:last-child {
 	margin-right: 0;
 }
 
-.social ul li svg {
+#c2 li svg {
 	width: 35px;
 	height: 35px;
 }
 
-.social ul li svg:hover {
+#c2 li svg:hover {
 	width: 40px;
 	height: 40px;
 }
@@ -425,8 +325,8 @@ main .plangs img {
 div.attention {
 	color: #fefefe;
 	padding: 25px;
-  width: fit-content;
-  width: -moz-fit-content;
+	width: fit-content;
+    width: -moz-fit-content;
 	margin: auto;
 	background: linear-gradient(47deg, rgba(246,134,134,1) 0%, rgba(255,0,0,1) 100%);
 	text-align: center;
@@ -439,8 +339,8 @@ div.warning {
 	margin: 20px;
 	padding: 25px;
 	position: absolute;
-  width: fit-content;
-  width: -moz-fit-content;
+	width: fit-content;
+    width: -moz-fit-content;
 	margin: auto;
 	background: linear-gradient(47deg, rgba(255,247,81,1) 0%, rgba(255,152,0,1) 100%);
 	text-align: center;
@@ -465,7 +365,6 @@ footer.new {
 }
 
 footer.new p {
-  transition: .3s;
 	margin: 0;
 }
 
@@ -560,8 +459,4 @@ footer.new p {
 	#c2 li {
 		margin-right: 15px;
 	}
-}
-
-@media screen and (max-width: 256px) {
-
 }
