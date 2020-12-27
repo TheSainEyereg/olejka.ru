@@ -202,43 +202,45 @@ $(() => {
     theme.initializate();
     data.get('https://api.bigdatacloud.net/data/client-info', 'data')
 
+    let domains=['localhost','olejka.pw','olejka.ru'];
     let script_check = async () => {
         let response = await fetch('page.js');
         return response.ok;
     }
+    if (domains.includes(w.location.hostname)) { debug.log('Includes '+w.location.hostname)
+        switch (w.location.pathname) {
+            case '/':
+                window.location.replace('/p/');
+                break;
 
-    switch (w.location.pathname) {
-        case '/':
-            window.location.replace('/p/');
-            break;
+            case '/p/':
+                anim.title.anim('Welcome',2200, 0)
+                anim.show($('#c1'), 900, 0);
+                anim.show($('#c2'), 900, 250);
+                anim.show($('#c3'), 900, 500);
+                anim.show($('#c4'), 900, 750);
+                $('#theme').click(() => {theme.change()});
+                get.text('https://www.sololearn.com/Profile/4746232').then((m) => {
+                    debug.log('Got SoloLearn page');
+                    let parser = new DOMParser;
+                    let langs = $(parser.parseFromString(m, 'text/html')).find('.certificates .certificate');
+                    debug.log('Parsed SoloLearn page, got '+langs.length+' elements');
+                    for (let i = 0; i < langs.length; i++) {
+                        $('.plangs').append($('<li></li>').html('<img src=\'/assets/icons/langs/'+langs.eq(i).attr('title')+'.svg\' alt=\''+langs.eq(i).attr('title')+'\'>'));
+                        debug.log('Appended '+langs.eq(i).attr('title'));
+                    }
+                });
+                data.vk.get('https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online', () => {$('.face').append($('<img>').attr('src', data.data.photo_max_orig))});
+                
+                break;
 
-        case '/p/':
-            anim.title.anim('Welcome',2200, 0)
-            anim.show($('#c1'), 900, 0);
-            anim.show($('#c2'), 900, 250);
-            anim.show($('#c3'), 900, 500);
-            anim.show($('#c4'), 900, 750);
-            $('#theme').click(() => {theme.change()});
-            get.text('https://www.sololearn.com/Profile/4746232').then((m) => {
-                debug.log('Got SoloLearn page');
-                let parser = new DOMParser;
-                let langs = $(parser.parseFromString(m, 'text/html')).find('.certificates .certificate');
-                debug.log('Parsed SoloLearn page, got '+langs.length+' elements');
-                for (let i = 0; i < langs.length; i++) {
-                    $('.plangs').append($('<li></li>').html('<img src=\'/assets/icons/langs/'+langs.eq(i).attr('title')+'.svg\' alt=\''+langs.eq(i).attr('title')+'\'>'));
-                    debug.log('Appended '+langs.eq(i).attr('title'));
+            default:
+                if (script_check) {
+                    debug.log('Found page.js script for this page', '#fff','#000');
+                } else {
+                    debug.log('Script for this page is not described', '#fff','#000');
                 }
-            });
-            data.vk.get('https://api.vk.com/method/users.get?user_id=263432692&fields=photo_max_orig,online', () => {$('.face').append($('<img>').attr('src', data.data.photo_max_orig))});
-            
-            break;
-
-        default:
-            if (script_check) {
-                debug.log('Found page.js script for this page', '#fff','#000');
-            } else {
-                debug.log('Script for this page is not described', '#fff','#000');
-            }
-            break;
+                break;
+        }
     }
 })
