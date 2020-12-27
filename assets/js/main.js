@@ -207,7 +207,8 @@ $(() => {
         let response = await fetch('page.js');
         return response.ok;
     }
-    if (domains.includes(w.location.hostname)) { debug.log('Includes '+w.location.hostname)
+    if (domains.includes(w.location.hostname)) {
+        debug.log('Includes '+w.location.hostname)
         switch (w.location.pathname) {
             case '/':
                 window.location.replace('/p/');
@@ -242,5 +243,5 @@ $(() => {
                 }
                 break;
         }
-    }
+    } else {debug.log('This script is not for '+w.location.hostname)};
 })
