@@ -5,8 +5,13 @@
 
 
 :root {
-	--first-color: #0a0a0a;
-	--second-color: #fefefe;
+  /*Constant variables*/
+  --dark: #0a0a0a;
+  --light: #fefefe;
+
+  /*Environment variables*/
+	--first-color: var(--dark);
+	--second-color: var(--light);
 }
 
 html, body{
@@ -383,6 +388,7 @@ footer.new p {
 	background: rgba(255, 255, 255, 0);
 	border: dashed 1px var(--second-color);
 	color: var(--second-color);
+  transition: .3s;
 }
 
 .btn2 {
@@ -402,6 +408,7 @@ footer.new p {
 	border: 1px solid var(--second-color);
 	border-radius: 3px;
 	background: rgba(255, 255, 255, 0);
+  transition: .3s;
 }
 .btn2:hover {
 	transform: scale(1.1);
@@ -409,6 +416,7 @@ footer.new p {
 	border: none;
 	border-radius: 35px;
 	background: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+  transition: .3s;
 }
 
 /* Stupid mobile adaptation */
