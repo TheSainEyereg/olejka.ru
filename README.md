@@ -1,4 +1,5 @@
-<img height="150px" src="assets/icons/favB.svg" alt="Olejka logo"></img>
+<!--![Olejka logo](/assets/icons/favicon.svg =250x)-->
+<img src="/assets/icons/favicon.svg" height=250px><br>
 # olejka.ru
- Official repository of my website<br>
- <a href="https://olejka.ru/">Direct link</a>
+ Official repository of my website  
+ [Link to website](https://olejka.ru/)
