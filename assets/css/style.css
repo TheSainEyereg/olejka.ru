@@ -3,7 +3,6 @@
 @import url('https://fonts.olejka.ru/Fredoka-One.css'); /* English h1-h5 on some pages */
 @import url('https://fonts.olejka.ru/VK-Sans-Display.css'); /* Russian h1-h5 on some pages */
 
-
 :root {
   /*Constant variables*/
   --dark: #0a0a0a;
@@ -29,71 +28,69 @@ html, body{
 	transition: .3s;
 }
 
-
 a {
   color: var(--second-color);
   transition: .3s;
 }
-
 a:hover {
   color: #3bdeff;
   transition: .0s;
 }
-
-p {
-  transition: .3s;
-}
-
+p {transition: .3s;}
 table {
 	border-collapse: collapse;
 	width: 75%;
 }
-
-tr {
-	padding: 2px;
-}
-
-img {
-	height: 100px;
-}
-
+tr {padding: 2px;}
+img {height: 100px;}
 svg {
 	fill: var(--second-color);
 	transition: .3s;
 }
-
-svg path {
-	transform: translateY(25%);
-}
-
+svg path {transform: translateY(25%);}
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Comfortaa';
 	margin: 0;
 }
+h1 {font-size: 50px;}
+footer p, header p{font-family: 'Comfortaa';}
 
-h1 {
-	font-size: 50px;
+header {
+  width: 100%;
+  height: max-content;
+}
+header nav {
+  position: relative;
+  float: right;
+}
+header nav svg {
+	width: 60px;
+	height: 60px;
+}
+header nav svg:hover {
+  opacity: 75%;
+  cursor: pointer;
 }
 
-footer p, header p{
-	font-family: 'Comfortaa';
+main {
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
 }
 
 .grad {
 	background: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
 	color: var(--second-color);
 }
-
-.clickable {
-	cursor: pointer;
-}
+.clickable {cursor: pointer;}
 
 /* Real glitch effect */
 .glitch {
   position: relative;
   user-select: none;
 }
-  
 .glitch:after {
     animation: glitch-animation 2s infinite linear alternate-reverse;
     background: var(--first-color);
@@ -109,7 +106,6 @@ footer p, header p{
     text-shadow: -1.5px 0 red;
     top: 0;
 }
-
 .glitch:before {
     animation: glitch-animation-2 3s infinite linear alternate-reverse;
     background: var(--first-color);
@@ -125,7 +121,6 @@ footer p, header p{
     text-shadow: 1.5px 0 blue;
     top: 0;
 }
-
 /* Expanded Animations */
 @keyframes glitch-animation {
     0% {
@@ -137,7 +132,7 @@ footer p, header p{
     10% {
       clip: rect(48px, 9999px, 29px, 0);
     }
-    15.0% {
+    15% {
       clip: rect(42px, 9999px, 73px, 0);
     }
     20% {
@@ -146,7 +141,7 @@ footer p, header p{
     25% {
       clip: rect(34px, 9999px, 55px, 0);
     }
-    30.0% {
+    30% {
       clip: rect(86px, 9999px, 73px, 0);
     }
     35% {
@@ -161,10 +156,10 @@ footer p, header p{
     50% {
       clip: rect(57px, 9999px, 98px, 0);
     }
-    55.0% {
+    55% {
       clip: rect(5px, 9999px, 46px, 0);
     }
-    60.0% {
+    60% {
       clip: rect(82px, 9999px, 31px, 0);
     }
     65% {
@@ -179,7 +174,7 @@ footer p, header p{
     80% {
       clip: rect(23px, 9999px, 85px, 0);
     }
-    85.0% {
+    85% {
       clip: rect(54px, 9999px, 84px, 0);
     }
     90% {
@@ -192,7 +187,6 @@ footer p, header p{
       clip: rect(4px, 9999px, 91px, 0);
     }
 }
-
 @keyframes glitch-animation-2 {
     0% {
       clip: rect(65px, 9999px, 100px, 0);
@@ -203,7 +197,7 @@ footer p, header p{
     10% {
       clip: rect(79px, 9999px, 85px, 0);
     }
-    15.0% {
+    15% {
       clip: rect(75px, 9999px, 5px, 0);
     }
     20% {
@@ -212,7 +206,7 @@ footer p, header p{
     25% {
       clip: rect(14px, 9999px, 79px, 0);
     }
-    30.0% {
+    30% {
       clip: rect(1px, 9999px, 66px, 0);
     }
     35% {
@@ -227,10 +221,10 @@ footer p, header p{
     50% {
       clip: rect(71px, 9999px, 75px, 0);
     }
-    55.0% {
+    55% {
       clip: rect(2px, 9999px, 48px, 0);
     }
-    60.0% {
+    60% {
       clip: rect(30px, 9999px, 16px, 0);
     }
     65% {
@@ -245,7 +239,7 @@ footer p, header p{
     80% {
       clip: rect(47px, 9999px, 73px, 0);
     }
-    85.0% {
+    85% {
       clip: rect(3px, 9999px, 27px, 0);
     }
     90% {
@@ -260,44 +254,11 @@ footer p, header p{
 }
 /* Thanks https://gist.github.com/idmontie/ for this effect */
 
-#c1, #c2, #c3, #c4, #c5{
-	opacity: 0;
-}
-
-header {
-  width: 100%;
-  height: max-content;
-}
-
-header nav {
-  position: relative;
-  float: right;
-}
-
-header nav svg {
-	width: 60px;
-	height: 60px;
-}
-
-header nav svg:hover {
-	width: 65px;
-  height: 65px;
-  cursor: pointer;
-}
-
-main {
-	text-align: center;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
-}
-
+#c1, #c2, #c3, #c4, #c5{opacity: 0;}
 #c1 {
   font-size: 60px;
   margin-bottom: 10px;
 }
-
 #c2 {
 	position: relative;
 	display: flex;
@@ -308,20 +269,12 @@ main {
 	list-style: none;
 	margin: auto;
 }
-
-#c2 li {
-	margin-right: 20px;
-}
-
-#c2 li:last-child {
-	margin-right: 0;
-}
-
+#c2 li {margin-right: 20px;}
+#c2 li:last-child {margin-right: 0;}
 #c2 li svg {
 	width: 35px;
 	height: 35px;
 }
-
 #c2 li svg:hover {
 	width: 40px;
 	height: 40px;
@@ -338,14 +291,13 @@ div.attention {
 	border: hidden;
 	border-radius: 10px;
 }
-
 div.warning {
 	color: #fefefe;
 	margin: 20px;
 	padding: 25px;
 	position: absolute;
 	width: fit-content;
-    width: -moz-fit-content;
+  width: -moz-fit-content;
 	margin: auto;
 	background: linear-gradient(47deg, rgba(255,247,81,1) 0%, rgba(255,152,0,1) 100%);
 	text-align: center;
@@ -359,7 +311,6 @@ footer.old {
 	position: fixed;
 	bottom: 0;
 }
-
 footer.new {
 	color: var(--second-color);
 	font-size: 13px;
@@ -368,10 +319,7 @@ footer.new {
 	width: 100%;
 	text-align: center;
 }
-
-footer.new p {
-	margin: 0;
-}
+footer.new p {margin: 0;}
 
 .btn {
 	display: inline-block;
@@ -383,7 +331,6 @@ footer.new p {
 	border-radius: 5px;
 	transition: .3s;
 }
-
 .btn:hover {
 	background: rgba(255, 255, 255, 0);
 	border: dashed 1px var(--second-color);
@@ -420,51 +367,29 @@ footer.new p {
 }
 
 /* Stupid mobile adaptation */
-
-@media screen and (max-width: 1024px) {
-
-}
-
+@media screen and (max-width: 1024px) {}
 @media screen and (max-width: 512px) {
-	body {
-		font-size: 13px;
-  }
-  
+	body {font-size: 13px;}
   header nav svg {
     width: 50px;
     height: 50px;
   }
-  
   header nav svg {
     width: 55px;
     height: 55px;
   }
-
-	footer {
-		font-size: 11px;
-	}
-
-	#c2 li {
-		margin-right: 25px;
-	}
-
+	footer {font-size: 11px;}
+	#c2 li {margin-right: 25px;}
 	#c2 li svg {
 		width: 30px;
 		height: 30px;
 	}
-
 	#c2 li svg:hover {
 		width: 35px;
 		height: 35px;
 	}
 }
-
 @media screen and (max-width: 400px) {  
-  #c1 {
-    font-size: 50px;
-  }
-
-	#c2 li {
-		margin-right: 15px;
-	}
+  #c1 {font-size: 50px;}
+	#c2 li {margin-right: 15px;}
 }
