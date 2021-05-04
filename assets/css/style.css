@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {font-size: 50px;}
 footer p, header p{font-family: 'Comfortaa';}
 
-header {
+/*header {
   width: 100%;
   height: max-content;
 }
@@ -70,7 +70,7 @@ header nav svg {
 header nav svg:hover {
   opacity: 75%;
   cursor: pointer;
-}
+}*/
 
 main {
 	text-align: center;

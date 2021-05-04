@@ -220,7 +220,7 @@ $(() => {
             anim.show($("#c1"), 900, 0);
             anim.show($("#c2"), 900, 250);
             anim.show($("#c3"), 900, 500);
-            $("#theme")[0].addEventListener("click", () => {theme.change()});
+            //$("#theme")[0].addEventListener("click", () => {theme.change()});
             break;
 
         case '/p/':
