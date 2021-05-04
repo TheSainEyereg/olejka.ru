@@ -79,6 +79,7 @@ let theme = {
                     $('body').css('--second-color', 'var(--light)');
                     break;
             }
+            $("meta[name='theme-color']").attr('content', $(':root').css(`--${this.current}`));
             localStorage.setItem('theme', this.current);
             debug.log('Set theme to ' + arg, '#00c800');
         }
