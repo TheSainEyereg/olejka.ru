@@ -45,14 +45,23 @@ let debug = {
 
 let theme = {
     current: null,
+    user: window.matchMedia('(prefers-color-scheme: dark)'),
     ignore: ['/ss/'],
     initializate() {
+        const usercheck = _ => {
+            if (theme.user.matches) {
+                this.set('dark')
+            } else {
+                this.set('light')
+            }
+        }
         this.current = localStorage.getItem('theme');
         if ((this.current != 'dark') && (this.current != 'light')) {
-            this.set(theme_default);
+            usercheck()
         } else {
             this.set(this.current);
         }
+        this.user.onchange = () => {usercheck()}
     },
     set(arg) {
         if (this.ignore.includes(w.location.pathname)) {
