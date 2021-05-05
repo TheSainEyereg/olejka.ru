@@ -1,11 +1,11 @@
 //----------------------------------Sett----------------------------------\\
 const info = {
-    build: '080421',
-    version: 1
+    build: '050521',
+    version: 2
 }
 
-const theme_default = 'dark';
-const debug_default = '0'; //Not true or false because localStorage cannot store boolean values
+const theme_auto = true;
+const debug_default = false; //Not true or false because localStorage cannot store boolean values
 const debug_time = true;
 const language_default = 'en-US';
 const volume_default =  0.5;
@@ -19,56 +19,69 @@ let w = window;
 let debug = {
     enabled: null,
     initializate() {
-        this.enabled = localStorage.getItem('debug');
-        if ((this.enabled != '0') && (this.enabled != '1')) {
-            this.set(debug_default);
-        } else {
+        this.enabled = localStorage.getItem('debug') === 'true';
+        if (localStorage.getItem('debug')) {
             this.set(this.enabled);
+        } else {
+            this.set(debug_default);
         }
     },
-    set(arg) {
+    set(arg) { //true or false
         this.enabled = arg;
         localStorage.setItem('debug', this.enabled);
-        debug.log('Set debug to ' + arg, '#00c800');
+        debug.log('Set debug to ' + this.enabled, '#00c800');
     },
     log(text, color, background) {
-        if (this.enabled == '1') {
-            if (!debug_time) {
-                console.log('%c '+text+' ', 'color: '+color+'; background: '+background);
-            } else {
+        if (this.enabled) {
+            let out = '';
+            if (debug_time) {
                 let date = new Date;
-                console.log('['+date.getMinutes()+':'+date.getSeconds()+':'+date.getMilliseconds()+']:'+'%c '+text+' ', 'color: '+color+'; background: '+background);
+                out += `[${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}]:`;
             }
+            out += `%c ${text} `;
+            console.log(out, `color: ${color}; background: ${background}`);
         }
     }
 };
 
 let theme = {
     current: null,
+    auto: true,
     user: window.matchMedia('(prefers-color-scheme: dark)'),
     ignore: ['/ss/'],
     initializate() {
+        this.auto = localStorage.getItem('theme_auto') === 'true';
+        if (localStorage.getItem('theme_auto')) {
+            this.autoset(this.auto);
+        } else {
+            this.autoset(theme_auto);
+        }
         const usercheck = _ => {
             if (theme.user.matches) {
-                this.set('dark')
+                this.set('dark');
             } else {
-                this.set('light')
+                this.set('light');
             }
         }
         this.current = localStorage.getItem('theme');
         if ((this.current != 'dark') && (this.current != 'light')) {
-            usercheck()
+            usercheck();
         } else {
-            this.set(this.current);
+            if (this.auto) usercheck(); else this.set(this.current);
         }
-        this.user.onchange = () => {usercheck()}
+        this.user.onchange = _ => {if (this.auto) usercheck()};
     },
-    set(arg) {
+    autoset(arg) { //true or false
+        this.auto = arg;
+        localStorage.setItem('theme_auto', this.auto);
+        debug.log('Set auto theme to ' + this.auto, '#00c800');
+    },
+    set(arg) { //'dark' or 'light'
         if (this.ignore.includes(w.location.pathname)) {
-            debug.log('Cant set theme, this page in ignore list', 'red')
+            debug.log('Cant set theme, this page in ignore list', 'red');
         } else {
             this.current = arg
-            switch (arg) {
+            switch (arg) { //It's should be rewrited 
                 case 'light':
                     $('body').css('--first-color', 'var(--light)');
                     $('body').css('--second-color', 'var(--dark)');
