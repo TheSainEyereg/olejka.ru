@@ -6,10 +6,17 @@
   /*Constant variables*/
   --dark: #0a0a0a;
   --light: #fefefe;
+}
 
-  /*Environment variables*/
+body.light{
+	--first-color: var(--light);
+	--second-color: var(--dark);
+	
+}
+body.dark{
 	--first-color: var(--dark);
 	--second-color: var(--light);
+	
 }
 
 html, body{
