@@ -229,11 +229,7 @@ $(() => {
     }
     switch (w.location.pathname) {
         case '/':
-            anim.title.anim("Welcome",2200, 0)
-            anim.show($("#c1"), 900, 0);
-            anim.show($("#c2"), 900, 250);
-            anim.show($("#c3"), 900, 500);
-            //$("#theme")[0].addEventListener("click", () => {theme.change()});
+            anim.title.anim("¯\\_(ツ)_/¯",2200, 0)
             break;
 
         case '/p/':
