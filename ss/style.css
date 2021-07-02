@@ -1,0 +1,77 @@
+main {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+@keyframes blink {
+	0% {
+		stroke-dashoffset: -1600;
+		opacity: 0;
+		filter: blur(15px)
+	}
+	25% {
+		opacity: 1;
+		filter: blur(0px)
+	}
+	50% {
+		/*
+		The animation is not adapted for an infinite loop 
+		so at the end we make it transparent...
+
+		...and blur cuz hight ram usage is cool ¯\_(ツ)_/¯
+
+		Just realized that I added 50% for the sake of comments...🤔
+		*/
+	}
+	75% {
+		opacity: 1;
+		filter: blur(0px)
+	}
+	100% {
+		stroke-dashoffset: 1600;
+		opacity: 0;
+		filter: blur(15px)
+	}
+}
+main svg {height: 150px;}
+main svg path {
+    stroke-dasharray: 1600;
+    stroke-dashoffset: -1600;
+    animation: blink 2s ease-in-out infinite;
+    fill:none;
+    stroke: var(--second-color);
+    stroke-width:75;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+}
+main div {margin: 30pt 0;}
+a {
+	font-family: 'Ubuntu';
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	background: var(--second-color);
+	color: var(--first-color);
+	border: solid 1px var(--second-color);
+	border-radius: 5px;
+}
+a:hover {
+	background: #00000000;
+	border: solid .5px var(--second-color);
+	color: var(--second-color);
+	transition: .3s;
+}
+
+@media screen and (max-width: 900px) {
+    body {font-size: 10pt;}
+    main svg {height: 120px;}
+    h1, h2, h3 {font-size: 30pt;}
+}
+@media screen and (max-width: 700px) {
+    body {font-size: 8pt;}
+    main svg {height: 100px;}
+    h1, h2, h3 {font-size: 20pt;}
+}
