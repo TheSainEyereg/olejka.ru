@@ -1,40 +1,43 @@
-@import url('https://fonts.olejka.ru/Baloo-2.css');
+@import url('https://fonts.olejka.ru/Ubuntu.css');
+@import url('https://fonts.olejka.ru/VK-Sans-Display.css');
 
-/*
 :root {
-	--first-color: #0a0a0a;
-	--second-color: #fefefe;
+	--light: #fefefe;
+	--dark: #0a0a0a;
 }
-*/
 
-body {	
+body {
+	user-select: none;
 	text-align: center;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	font-family: 'Baloo 2';
-	background-color: var(--first-color);
+	font-family: 'VK Sans Display';
+	background: var(--first-color);
 	color: var(--second-color);
-	transition: .4s;
+	transition: .3s;
+}
+
+body.light {
+	--first-color: var(--light);
+	--second-color: var(--dark);
+}
+body.dark {
+	--first-color: var(--dark);
+	--second-color: var(--light);
 }
 
 h1 {
-	font-size: 50px;
+	font-size: 60px;
 	margin: 0;
 	margin-bottom: 10px;
 }
 
-p {
-	font-size: 30px;
-	margin: 0;
-}
-
-svg {
-	fill: var(--second-color);
-}
+div {font-size: 30px;}
 
 a {
+	font-family: 'Ubuntu';
 	margin-top: 25px;
 	display: inline-block;
 	padding: 0.3em 1em;
@@ -43,11 +46,10 @@ a {
 	color: var(--first-color);
 	border: solid 1px var(--second-color);
 	border-radius: 5px;
-	transition: .4s;
+	transition: .3s;
 }
-
 a:hover {
-	background: rgba(255, 255, 255, 0);
-	border: dashed 1px var(--second-color);
+	background: #00000000;
+	border: solid .5px var(--second-color);
 	color: var(--second-color);
 }
