@@ -1,4 +1,4 @@
-@import url('https://fonts.olejka.ru/Baloo-2.css');
+@import url('https://fonts.olejka.ru/VK-Sans-Display.css');
 
 /*
 :root {
@@ -13,7 +13,7 @@ body {
 	left: 50%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	font-family: 'Baloo 2';
+	font-family: 'VK Sans Display';
 	font-synthesis: style;
 	background-color: var(--first-color);
 	color: var(--second-color);
