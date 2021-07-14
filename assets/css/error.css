@@ -14,6 +14,7 @@ body {
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
 	font-family: 'Baloo 2';
+	font-synthesis: style;
 	background-color: var(--first-color);
 	color: var(--second-color);
 	transition: .4s;

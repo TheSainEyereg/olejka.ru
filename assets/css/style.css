@@ -29,6 +29,7 @@ html, body{
 	color: var(--second-color);
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 15px;
+	font-synthesis: style;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	transition: .3s;
