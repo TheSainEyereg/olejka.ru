@@ -231,7 +231,7 @@ ready(() => {
     }
     switch (window.location.pathname) {
         case "/":
-            anim.title.anim("¯\\_(ツ)_/¯",2000, 0)
+            //anim.title.anim("¯\\_(ツ)_/¯",2000, 0)
             break;
 
         case "/p/":
