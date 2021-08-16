@@ -5,7 +5,7 @@ main {
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
 }
-@keyframes blink {
+@keyframes stroke {
 	0% {
 		stroke-dashoffset: -1600;
 		opacity: 0;
@@ -39,7 +39,7 @@ main svg {height: 150px;}
 main svg path {
     stroke-dasharray: 1600;
     stroke-dashoffset: -1600;
-    animation: blink 2s ease-in-out infinite;
+    animation: stroke 2s ease-in-out infinite;
     fill:none;
     stroke: var(--second-color);
     stroke-width:75;
@@ -47,31 +47,9 @@ main svg path {
     stroke-linejoin:round;
     stroke-miterlimit:10;
 }
-main div {margin: 30pt 0;}
-a {
-	font-family: 'Ubuntu';
-	display: inline-block;
-	padding: 0.3em 1em;
-	text-decoration: none;
-	background: var(--second-color);
-	color: var(--first-color);
-	border: solid 1px var(--second-color);
-	border-radius: 5px;
-}
-a:hover {
-	background: #00000000;
-	border: solid .5px var(--second-color);
-	color: var(--second-color);
-	transition: .3s;
-}
+main>h1 {font-size: 100pt;}
+main>div {margin: 10px 0;}
+.btn {margin-top: 20px;}
 
-@media screen and (max-width: 900px) {
-    body {font-size: 10pt;}
-    main svg {height: 120px;}
-    h1, h2, h3 {font-size: 30pt;}
-}
-@media screen and (max-width: 700px) {
-    body {font-size: 8pt;}
-    main svg {height: 100px;}
-    h1, h2, h3 {font-size: 20pt;}
-}
+@media screen and (max-width: 900px) {main svg {height: 120px}}
+@media screen and (max-width: 700px) {main svg {height: 100px}}
