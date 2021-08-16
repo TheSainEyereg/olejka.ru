@@ -57,7 +57,7 @@ const theme = {
             }
         }
         this.current = localStorage.getItem("theme");
-        if (this.current != "dark" || "light") {
+        if (!["dark", "light"].includes(this.current)) {
             usercheck();
         } else {
             if (this.auto) usercheck(); else this.set(this.current);
