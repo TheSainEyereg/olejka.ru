@@ -43,7 +43,6 @@ const debug = {
 };
 
 const theme = {
-    current: null,
     auto: true,
     user: window.matchMedia("(prefers-color-scheme: dark)"),
     ignore: ["ss"],
@@ -62,7 +61,7 @@ const theme = {
             }
         }
         this.current = localStorage.getItem("theme");
-        if ((this.current != "dark") && (this.current != "light")) {
+        if (this.current != "dark" || "light") {
             usercheck();
         } else {
             if (this.auto) usercheck(); else this.set(this.current);
@@ -169,13 +168,11 @@ const get = {
 }
 
 const data = {
-    data: null,
     get(url, callback, key) {
         debug.log(`Sent JSON request "${url}"`);
         get.json(url).then((m) => {
-            if (typeof callback != "undefined") callback(m);
             this.data = m;
-            if (key!=undefined) {this.save(key)};
+            if (typeof callback != "undefined") callback(m);
         })
     },
     save(key) {sessionStorage.setItem(key, JSON.stringify(this.data))},
@@ -190,20 +187,22 @@ const data = {
         },
         send(url) {
             const script = document.createElement("script");
-            script.setAttribute("type", "text/javascript");
-            script.setAttribute("src", `${url}&access_token=${vk_api_key}&v=${vk_api_ver}&callback=data.vk.catch`);
+            script.type = "text/javascript";
+            script.src = `${url}&access_token=${vk_api_key}&v=${vk_api_ver}&callback=data.vk.catch`;
             script.id = "TEMP";
             document.head.append(script);
-            debug.log(`Sent VK request "${url}"`);
+            debug.log(`Sent VK request "${script.src}"`);
         },
         catch(ansv) {
-            debug.log(`Cached VK answer:\n${JSON.stringify(ansv.response[0])}`);
-            data.data = ansv.response[0];
+            debug.log(`Cached VK answer:`);
+            if (debug.enabled) console.log(ansv);
+            data.data = ansv;
             document.getElementById("TEMP").remove();
-            if (typeof this.callback != "undefined") this.callback();
+            if (typeof this.callback != "undefined") this.callback(ansv);
         }
     }
 }
+
 function ready(callback) {
     document.addEventListener("DOMContentLoaded", _=> {
         debug.log("DOM loaded", "#fff","#000");
@@ -216,4 +215,31 @@ function ready(callback) {
 //----------------------------------Main----------------------------------\\
 debug.initializate();
 debug.log(`Build ${info.build}v${info.version}`, "#fff","#000");
-ready();
+if (["127.0.0.1", "localhost"].includes(location.hostname)) document.title=`"${document.title}" Dev`;
+sessionStorage.setItem("lastPage", window.location.pathname)
+
+const font = document.createElement("link");
+font.rel = "stylesheet";
+font.href = `/assets/css/fonts/${location.hostname == "olejka.ru" ? "olejka.ru" : "localhost"}.css`; 
+el("head").append(font);
+
+
+ready(_ => {
+    el("footer").innerHTML = `&copy;Copyright ${new Date().getFullYear()} ${location.hostname}`;
+    const overlay = el(".overlay");
+    if (overlay) {
+        let counter = 0; //I like events
+        el(".overlay .box").onanimationend = _ => {
+            counter++;
+            if (counter==2) {
+                setTimeout(_ => {
+                    overlay.classList.add("final");
+                    setTimeout(_ => {
+                        el("body").classList.remove("freezed")
+                        overlay.remove();
+                    }, 350)
+                }, 150)
+            }
+        };
+    }
+});
