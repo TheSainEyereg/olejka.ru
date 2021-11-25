@@ -207,7 +207,7 @@ function ready(callback) {
     document.addEventListener("DOMContentLoaded", _=> {
         debug.log("DOM loaded", "#fff","#000");
         theme.initializate();
-        if (typeof callback != "undefined") callback();
+       if (typeof callback != "undefined") callback();
     });
 }
 
@@ -225,21 +225,17 @@ el("head").append(font);
 
 
 ready(_ => {
-    el("footer").innerHTML = `&copy;Copyright ${new Date().getFullYear()} ${location.hostname}`;
+    el("footer").innerHTML = `&copy;${location.hostname} ${new Date().getFullYear()}`;
     const overlay = el(".overlay");
-    if (overlay) {
-        let counter = 0; //I like events
-        el(".overlay .box").onanimationend = _ => {
-            counter++;
-            if (counter==2) {
-                setTimeout(_ => {
-                    overlay.classList.add("final");
-                    setTimeout(_ => {
-                        el("body").classList.remove("freezed")
-                        overlay.remove();
-                    }, 350)
-                }, 150)
-            }
-        };
+    window.onload =_ => {
+		if (overlay) {
+			setTimeout(_ => {
+				overlay.classList.add("final");
+				setTimeout(_ => {
+					el("body").classList.remove("freezed")
+					overlay.remove();
+				}, 350)
+			}, 1000)
+		}
     }
 });

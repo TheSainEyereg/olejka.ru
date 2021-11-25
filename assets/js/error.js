@@ -163,7 +163,7 @@ font.href = `/assets/css/fonts/${location.hostname == "olejka.ru" ? "olejka.ru" 
 el("head").append(font);
 
 ready(_ => {
-    el("footer").innerHTML = `&copy;Copyright ${new Date().getFullYear()} ${location.hostname}`;
+    el("footer").innerHTML = `&copy;${location.hostname} ${new Date().getFullYear()}`;
     const ref = el("#ref");
     if (sessionStorage.getItem("lastPage")) ref.onclick = _=>{location.replace(sessionStorage.getItem("lastPage"))}
     else ref.remove();

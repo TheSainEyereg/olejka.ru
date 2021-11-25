@@ -96,13 +96,13 @@ h1, h2, h3 {
 .overlay svg path {
 	stroke-dasharray: 1600;
 	stroke-dashoffset: -650;
-	animation: blink forwards .5s ease-in;
 	fill:none;
 	stroke: var(--second-color);
 	stroke-width:75;
 	stroke-linecap:unset;
 	stroke-linejoin:round;
 	stroke-miterlimit:10;
+	animation: blink forwards .5s ease-in;
 }
 @keyframes unscale {
 	from {width: 170px;}
