@@ -16,7 +16,7 @@ html, body{
 	color: var(--second-color);
 	/*font-family: 'Ubuntu', sans-serif;*/
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: 12pt;
+	font-size: 14pt;
 	font-synthesis: style;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
@@ -51,7 +51,7 @@ svg {transition: .3s;}
 h1, h2, h3 footer{font-family: 'VK Sans Display';}
 h1, h2, h3 {
 	margin: 0;
-	font-size: 40pt;
+	font-size: 50pt;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FUCK (remove this) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -82,7 +82,7 @@ h1, h2, h3 {
 	}
 	to {
 		left: 50%;
-		width: 170px;
+		width: 18%;/*170px*/
 	}
 }
 .overlay .box {
@@ -105,8 +105,8 @@ h1, h2, h3 {
 	animation: blink forwards .5s ease-in;
 }
 @keyframes unscale {
-	from {width: 170px;}
-	to {width: 350px;}
+	from {width: 18%;}
+	to {width: 30%;}
 }
 @keyframes hide {
 	from {opacity: 1;}
@@ -133,17 +133,17 @@ main {
 	align-items: center;
 }
 
-main .links {
-	display: flex;
+main h1 {margin: 10px 0;}
+main .links {display: flex;}
+main .links a {
+	margin: 4px;
+	text-decoration: none;
 }
-
-/* Buttons like circle */
-main .links a {margin: 3px;}
 
 
 footer {
 	color: var(--second-color);
-	font-size: 13px;
+	font-size: 14px;
 	position: fixed;
 	bottom: 0;
 	z-index: 1000;
@@ -167,17 +167,12 @@ footer {
 
 /* Stupid mobile adaptation */
 @media screen and (max-width: 900px) {
+    body {font-size: 12pt;}
+    h1, h2, h3 {font-size: 40pt;}
+	footer {font-size: 13px;}
+}
+@media screen and (max-width: 500px) {
     body {font-size: 10pt;}
     h1, h2, h3 {font-size: 30pt;}
 	footer {font-size: 12px;}
 }
-@media screen and (max-width: 500px) {
-    body {font-size: 8pt;}
-    h1, h2, h3 {font-size: 20pt;}
-	footer {font-size: 11px;}
-}
-
-/* 22 thx */
-@media screen and (max-width: 1550px) {}
-@media screen and (max-width: 991px) {}
-@media screen and (max-width: 400px) {}
