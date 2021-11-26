@@ -119,6 +119,28 @@ h1, h2, h3 {
 	animation: unscale forwards .35s ease-out;
 }
 
+
+main {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+main .links {
+	display: flex;
+}
+
+/* Buttons like circle */
+main .links a {margin: 3px;}
+
+
 footer {
 	color: var(--second-color);
 	font-size: 13px;
@@ -147,10 +169,12 @@ footer {
 @media screen and (max-width: 900px) {
     body {font-size: 10pt;}
     h1, h2, h3 {font-size: 30pt;}
+	footer {font-size: 12px;}
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
     body {font-size: 8pt;}
     h1, h2, h3 {font-size: 20pt;}
+	footer {font-size: 11px;}
 }
 
 /* 22 thx */
