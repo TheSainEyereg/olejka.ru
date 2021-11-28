@@ -3,6 +3,9 @@
 	--trsnsition: .3s;
 	--dark: #0a0a0a;
 	--light: #fefefe;
+
+	
+	--overlay-final: 200px;
 }
 
 html, body{
@@ -33,14 +36,6 @@ body.dark {
 	--second-color: var(--light);
 }
 
-a {
-	color: var(--second-color);
-	transition: .3s;
-}
-a:hover {
-	color: #0C84FF;
-	transition: .0s;
-}
 p {transition: .3s;}
 table {
 	border-collapse: collapse;
@@ -82,7 +77,7 @@ h1, h2, h3 {
 	}
 	to {
 		left: 50%;
-		width: 18%;/*170px*/
+		width: var(--overlay-final);/*170px*/
 	}
 }
 .overlay .box {
@@ -105,7 +100,7 @@ h1, h2, h3 {
 	animation: blink forwards .5s ease-in;
 }
 @keyframes unscale {
-	from {width: 18%;}
+	from {width: var(--overlay-final);}
 	to {width: 30%;}
 }
 @keyframes hide {
@@ -114,11 +109,17 @@ h1, h2, h3 {
 }
 .overlay.final {animation: hide forwards .35s ease-in;}
 .overlay.final .box {
-	width: 200px;
+	width: var(--overlay-final);
 	left: 50%;
 	animation: unscale forwards .35s ease-out;
 }
 
+canvas {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
 
 main {
 	position: absolute;
@@ -136,10 +137,24 @@ main {
 main h1 {margin: 10px 0;}
 main .links {display: flex;}
 main .links a {
-	margin: 4px;
+	/*padding: 10px;*/
+	border-radius: 50%;
+	font-size: 16pt;
+	width: 60px;
+	height: 60px;
+	margin-right: 12px;
 	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .3s;
+	color: var(--second-color);
 }
-
+main .links a:last-child {margin-right: 0;}
+main .links a:hover {
+	background-color: var(--second-color);
+	color: var(--first-color);
+}
 
 footer {
 	color: var(--second-color);
@@ -158,21 +173,40 @@ footer {
 	color: var(--second-color);
 	border: solid var(--second-color) 1px;
 	border-radius: 5px;
+	transition: .3s;
 }
 .btn:hover {
 	background: var(--second-color);
 	color: var(--first-color);
-	transition: .3s;
 }
 
 /* Stupid mobile adaptation */
+@media screen and (max-width: 1200px){
+	:root {
+		--overlay-final: 18%;
+	}
+}
 @media screen and (max-width: 900px) {
     body {font-size: 12pt;}
     h1, h2, h3 {font-size: 40pt;}
 	footer {font-size: 13px;}
+	main h1 {margin: 9px 0;}
+	main .links a {
+		font-size: 14pt;
+		margin-right: 10px;
+		width: 50px;
+		height: 50px;
+	}
 }
 @media screen and (max-width: 500px) {
     body {font-size: 10pt;}
     h1, h2, h3 {font-size: 30pt;}
 	footer {font-size: 12px;}
+	main h1 {margin: 8px 0;}
+	main .links a {
+		font-size: 12pt;
+		margin-right: 8px;
+		width: 40px;
+		height: 40px;
+	}
 }

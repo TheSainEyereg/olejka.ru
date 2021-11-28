@@ -238,4 +238,6 @@ ready(_ => {
 			}, 1000)
 		}
     }
+
+	if (location.pathname == "/") runCanvas()
 });

@@ -51,5 +51,11 @@ main>h1 {font-size: 100pt;}
 main>div {margin: 10px 0;}
 .btn {margin-top: 20px;}
 
-@media screen and (max-width: 900px) {main svg {height: 120px}}
-@media screen and (max-width: 700px) {main svg {height: 100px}}
+@media screen and (max-width: 900px) {
+	main svg {height: 120px}
+	.btn {margin-top: 18px}
+}
+@media screen and (max-width: 700px) {
+	main svg {height: 100px}
+	.btn {margin-top: 16px}
+}
