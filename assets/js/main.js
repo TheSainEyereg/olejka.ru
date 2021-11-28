@@ -225,19 +225,19 @@ el("head").append(font);
 
 
 ready(_ => {
-    el("footer").innerHTML = `&copy;${location.hostname} ${new Date().getFullYear()}`;
+    el("footer").innerHTML = `&copy;Oleg Logvinov ${new Date().getFullYear()}`;
     const overlay = el(".overlay");
     window.onload =_ => {
 		if (overlay) {
 			setTimeout(_ => {
 				overlay.classList.add("final");
 				setTimeout(_ => {
-					el("body").classList.remove("freezed")
+					el("body").classList.remove("freezed");
 					overlay.remove();
 				}, 350)
 			}, 1000)
 		}
     }
 
-	if (location.pathname == "/") runCanvas()
+	if (location.pathname === "/") runCanvas();
 });
