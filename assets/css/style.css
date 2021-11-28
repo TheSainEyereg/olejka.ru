@@ -113,6 +113,11 @@ h1, h2, h3 {
 	left: 50%;
 	animation: unscale forwards .35s ease-out;
 }
+@media screen and (max-width: 1200px){
+	:root {
+		--overlay-final: 18%;
+	}
+}
 
 canvas {
 	position: fixed;
@@ -151,9 +156,15 @@ main .links a {
 	color: var(--second-color);
 }
 main .links a:last-child {margin-right: 0;}
-main .links a:hover {
+main .links a:active {
 	background-color: var(--second-color);
 	color: var(--first-color);
+}
+@media (hover: hover) { /* For mobile devices */
+	main .links a:hover {
+		background-color: var(--second-color);
+		color: var(--first-color);
+	}
 }
 
 footer {
@@ -181,11 +192,6 @@ footer {
 }
 
 /* Stupid mobile adaptation */
-@media screen and (max-width: 1200px){
-	:root {
-		--overlay-final: 18%;
-	}
-}
 @media screen and (max-width: 900px) {
     body {font-size: 12pt;}
     h1, h2, h3 {font-size: 40pt;}
