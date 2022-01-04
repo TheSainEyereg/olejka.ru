@@ -220,7 +220,7 @@ sessionStorage.setItem("lastPage", window.location.pathname)
 
 const font = document.createElement("link");
 font.rel = "stylesheet";
-font.href = `/assets/css/fonts/${location.hostname == "olejka.ru" ? "olejka.ru" : "localhost"}.css`; 
+font.href = `/assets/css/fonts/${["127.0.0.1", "localhost"].includes(location.hostname) ? "localhost" : "olejka.ru"}.css`; 
 el("head").append(font);
 
 
