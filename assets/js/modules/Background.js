@@ -1,3 +1,8 @@
+import Logger from "./Logger.js";
+import { getTheme } from "./Theme.js";
+
+const logger = new Logger("Background")
+
 const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8,
 		STAR_SIZE = 3,
 		STAR_MIN_SCALE = 0.2,
@@ -10,19 +15,6 @@ let pointerX,
 
 let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
 let gyroscopeInput = false;
-
-function runCanvas() {
-	canvas = document.querySelector("canvas"),
-	context = canvas.getContext("2d");
-	generate();
-	resize();
-	step();
-	
-	window.onresize = resize;
-	window.onmousemove = onMouseMove;
-	window.ondeviceorientation = onDeviceOrientation;
-	document.onmouseleave = onMouseLeave;
-}
 
 function generate() {
 	for(let i = 0; i < STAR_COUNT; i++) {
@@ -127,10 +119,11 @@ function render() {
 		context.lineCap = "round";
 		context.lineWidth = STAR_SIZE * star.z * scale;
 
+		const theme = getTheme();
 		const color = (() => {
-			if (theme.current === "light") {
+			if (theme === "light") {
 				return "0, 0, 0,";
-			} else if (theme.current === "dark") {
+			} else if (theme === "dark") {
 				return "255, 255, 255,";
 			} else {
 				return "128, 128, 128,"; //Grey that contrasts with all (except grey)
@@ -186,3 +179,21 @@ function onDeviceOrientation(event) {
 		if (Date.now() - lastGyro > 500) gyroscopeInput = false;
 	}, 1000);
 }
+
+
+function runCanvas() {
+	canvas = document.querySelector("canvas"),
+	context = canvas.getContext("2d");
+	generate();
+	resize();
+	step();
+	
+	window.onresize = resize;
+	window.onmousemove = onMouseMove;
+	window.ondeviceorientation = onDeviceOrientation;
+	document.onmouseleave = onMouseLeave;
+	
+	logger.log("Started canvas!")
+}
+
+export {runCanvas};
