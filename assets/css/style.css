@@ -13,7 +13,7 @@ html, body{
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	overflow-x: hidden;
+	overflow: hidden;
 	user-select: none;
 	background-color: var(--first-color);
 	color: var(--second-color);
@@ -23,9 +23,9 @@ html, body{
 	font-synthesis: style;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
-	transition: .3s;
+	transition: .25s;
 }
-body.freezed {overflow: hidden}
+body.onOverlay {overflow: hidden}
 
 body.light {
 	--first-color: var(--light);
@@ -36,20 +36,20 @@ body.dark {
 	--second-color: var(--light);
 }
 
-p {transition: .3s;}
+p {transition: .25s;}
 table {
 	border-collapse: collapse;
 	width: 75%;
 }
 tr {padding: 2px;}
-svg {transition: .3s;}
+svg {transition: .25s;}
 h1, h2, h3 footer{font-family: 'VK Sans Display';}
 h1, h2, h3 {
 	margin: 0;
 	font-size: 50pt;
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FUCK (remove this) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 .overlay {
 	overflow: hidden;
 	position: absolute;
@@ -138,6 +138,7 @@ main {
 	justify-content: center;
 	align-items: center;
 }
+body.onOverlay main {display: none;}
 
 main h1 {margin: 10px 0;}
 main .links {display: flex;}
@@ -152,19 +153,13 @@ main .links a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: .3s;
 	color: var(--second-color);
+	transition: .25s;
 }
 main .links a:last-child {margin-right: 0;}
 main .links a:active {
 	background-color: var(--second-color);
 	color: var(--first-color);
-}
-@media (hover: hover) { /* For mobile devices */
-	main .links a:hover {
-		background-color: var(--second-color);
-		color: var(--first-color);
-	}
 }
 
 footer {
@@ -176,19 +171,30 @@ footer {
 }
 
 .btn {
-	cursor: pointer;
 	display: inline-block;
 	padding: 0.3em 1em;
 	padding: 0.3em 1em;
 	text-decoration: none;
 	color: var(--second-color);
-	border: solid var(--second-color) 1px;
 	border-radius: 5px;
-	transition: .3s;
+	transition: .25s;
 }
-.btn:hover {
-	background: var(--second-color);
+.btn:active {
+	background-color: var(--second-color);
 	color: var(--first-color);
+}
+
+
+@media (hover: hover) { /* For non-mobile devices */
+	main .links a:hover {
+		background-color: var(--second-color);
+		color: var(--first-color);
+	}
+
+	.btn:hover {
+		background-color: var(--second-color);
+		color: var(--first-color);
+	}
 }
 
 /* Stupid mobile adaptation */

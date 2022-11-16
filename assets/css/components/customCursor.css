@@ -1,0 +1,77 @@
+body, a {cursor: none}
+
+main .links a:hover, .btn:hover {
+	background-color: transparent;
+	transition: 0;
+}
+
+a {
+	display: inline-block;
+	transform: translate(var(--translateX), var(--translateY)) scale(var(--scale));
+	transition-duration: .1s;
+	transition-timing-function: ease-out;
+	transition-property: opacity;
+	z-index: 1;
+
+	--scale: 1;
+	--translateX: 0;
+	--translateY: 0;
+}
+
+a:not(:hover) {
+	transition-property: transform, opacity;
+}
+
+a:active {
+	opacity: 0.75;
+	transform: translate(var(--translateX), var(--translateY)) scale(1);
+}
+
+.cursor, .cursor__content {
+	position: absolute;
+	transition-duration: .1s;
+	transition-timing-function: ease-out;
+}
+
+.cursor {
+	height: var(--height);
+	left: var(--left);
+	pointer-events: none;
+	z-index: -1;
+	top: var(--top);
+	transform: translate(-50%, -50%) scale(var(--scale));
+	transition-property: width, height;
+	width: var(--width);
+
+	--top: -1em;
+	--left: -1em;
+	--width: 1em;
+	--height: 1em;
+	--scale: 1;
+	--translateX: 0;
+	--translateY: 0;
+}
+
+.cursor__content {
+	background-color: var(--second-color);
+	border-radius: 0.6em;
+	bottom: 0;
+	left: 0;
+	opacity: 0.5;
+	right: 0;
+	top: 0;
+	transform: translate(var(--translateX), var(--translateY));
+	transition-property: opacity;
+}
+
+.cursor.is-locked {
+	transition-property: width, height, left, top;
+}
+
+.cursor.is-locked .cursor__content {
+	opacity: 1;
+}
+
+.cursor.is-locked.circle .cursor__content {
+	border-radius: 50%;
+}

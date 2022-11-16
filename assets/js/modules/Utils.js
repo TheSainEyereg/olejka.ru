@@ -11,6 +11,12 @@ function ready(callback) {
 	});
 }
 
+function isTouchDevice() {
+	return (("ontouchstart" in window) ||
+		(navigator.maxTouchPoints > 0) ||
+		(navigator.msMaxTouchPoints > 0));
+}
+
 function savePageData(data_or_key, value) {
 	if (!value) {
 		localStorage.setItem("pageData", JSON.stringify(data_or_key));
@@ -35,4 +41,4 @@ function getPageData(key) {
 	}
 }
 
-export { ready, savePageData, getPageData };
+export { ready, isTouchDevice, savePageData, getPageData };
