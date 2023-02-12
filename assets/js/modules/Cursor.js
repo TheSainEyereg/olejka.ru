@@ -19,6 +19,14 @@ function mousemoveHandler({ x, y }) {
 	}
 }
 
+function mouseenterHandler() {
+	cursor.style.removeProperty("display");
+}
+function mouseleaveHandler() {
+	cursor.style.setProperty("display", "none");
+}
+
+
 let rect = null;
 function linkMouseenterHandler({ target }) {
 	isOnElement = true;
@@ -95,6 +103,9 @@ function startHandling() {
 	document.addEventListener("mousedown", mousedownHandler);
 	document.addEventListener("mouseup", mouseupHandler);
 	document.addEventListener("mousemove", mousemoveHandler);
+
+	document.addEventListener("mouseenter", mouseenterHandler);
+	document.addEventListener("mouseleave", mouseleaveHandler);
 
 	document.querySelectorAll("a").forEach(a => {
 		a.addEventListener("mouseenter", linkMouseenterHandler, { passive: true });

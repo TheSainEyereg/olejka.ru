@@ -2,38 +2,43 @@ import Logger from "./modules/Logger.js";
 import { isTouchDevice } from "./modules/Utils.js";
 import { changeTheme } from "./modules/Theme.js";
 import { runCanvas } from "./modules/Background.js";
-import { startHandling, stopHandling } from "./modules/Cursor.js";
+import { startHandling } from "./modules/Cursor.js";
 
-globalThis.startHandling = startHandling;
-globalThis.stopHandling = stopHandling;
 
 const logger = new Logger("Main");
-window.changeTheme = changeTheme;
 
-const isLocalhost = ["127.0.0.1", "localhost"].includes(location.hostname);
-logger.log("Localhost = "+isLocalhost);
-
-if (isLocalhost) document.title=`"${document.title}" Dev`;
-sessionStorage.setItem("lastPage", location.pathname)
+const date = new Date()
+sessionStorage.setItem("lastPage", location.pathname);
 
 const font = document.createElement("link");
 font.rel = "stylesheet";
-font.href = `/assets/css/fonts/${isLocalhost ? "localhost" : "olejka.ru"}.css`; 
+font.href = "/assets/css/fonts/olejka.ru.css"; 
 document.head.append(font);
 
+const footer = document.querySelector("footer"),
+	overlay = document.querySelector(".overlay");
 
-const footer = document.querySelector("footer"), overlay = document.querySelector(".overlay");
-footer.innerHTML = `&copy;Oleg Logvinov ${new Date().getFullYear()}`;
+footer.innerHTML = `&copy;Oleg Logvinov ${date.getFullYear()}`;
 
-window.onload = _ => {
-	if (!isTouchDevice()) startHandling();
+const removeOverlay = () => {
 	if (overlay) {
-		setTimeout(_ => {
+		setTimeout(() => {
 			document.body.classList.remove("onOverlay");
 			overlay.classList.add("final");
-			setTimeout(_ => overlay.remove(), 350);
+			setTimeout(() => overlay.remove(), 350);
 		}, 1000);
 	}
 }
 
-if (location.pathname === "/") runCanvas();
+window.onload = _ => {
+	logger.log("Window loaded!");
+	document.fonts.ready.then(() => {
+		logger.log("All fonts are loaded!");
+		if (!isTouchDevice()) startHandling();
+		removeOverlay();
+	})
+}
+
+runCanvas(date.getMonth() < 2 || date.getMonth() == 11);
+
+window.changeTheme = changeTheme;
