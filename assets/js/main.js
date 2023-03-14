@@ -1,19 +1,17 @@
 import Logger from "./modules/Logger.js";
-import { isTouchDevice } from "./modules/Utils.js";
+import { fontsLoaded, isTouchDevice } from "./modules/Utils.js";
 import { changeTheme } from "./modules/Theme.js";
 import { runCanvas } from "./modules/Background.js";
 import { startHandling } from "./modules/Cursor.js";
 
 
+const fonts = ["VK Sans Display", "Ubuntu", "Font Awesome 6 Brands", "Font Awesome 6 Free"];
+
+
 const logger = new Logger("Main");
-
 const date = new Date()
-sessionStorage.setItem("lastPage", location.pathname);
 
-const font = document.createElement("link");
-font.rel = "stylesheet";
-font.href = "/assets/css/fonts/olejka.ru.css"; 
-document.head.append(font);
+sessionStorage.setItem("lastPage", location.pathname);
 
 const footer = document.querySelector("footer"),
 	overlay = document.querySelector(".overlay");
@@ -23,7 +21,6 @@ footer.innerHTML = `&copy;Oleg Logvinov ${date.getFullYear()}`;
 const removeOverlay = () => {
 	if (overlay) {
 		setTimeout(() => {
-			document.body.classList.remove("onOverlay");
 			overlay.classList.add("final");
 			setTimeout(() => overlay.remove(), 350);
 		}, 1000);
@@ -32,13 +29,16 @@ const removeOverlay = () => {
 
 window.onload = _ => {
 	logger.log("Window loaded!");
-	document.fonts.ready.then(() => {
-		logger.log("All fonts are loaded!");
-		if (!isTouchDevice()) startHandling();
+	document.body.classList.remove("onLoading");
+	overlay.classList.add("animate");
+	fontsLoaded(fonts).then(() => {
 		removeOverlay();
+		if (!isTouchDevice()) startHandling();
 	})
 }
 
-runCanvas(date.getMonth() < 2 || date.getMonth() == 11);
+const canvas = document.querySelector("#dots");
+if (canvas) runCanvas(canvas, date.getMonth() < 2 || date.getMonth() == 11);
+
 
 window.changeTheme = changeTheme;

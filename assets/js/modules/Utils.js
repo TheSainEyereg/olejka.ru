@@ -1,14 +1,34 @@
 import Logger from "./Logger.js";
 const logger = new Logger("Utils");
 
-function ready(callback) {
-	if (document.readyState != "loading") {
-		logger.log("Document is already ready!");
-		callback();
-	} else document.addEventListener("DOMContentLoaded", () => {
-		logger.log("DOMContentLoaded!");
-		callback();
-	});
+async function ready() {
+	return new Promise(res => {
+		if (document.readyState != "loading") {
+			logger.log("Document is already ready!");
+			res();
+		} else document.addEventListener("DOMContentLoaded", () => {
+			logger.log("DOMContentLoaded!");
+			res();
+		});
+	})
+}
+
+async function fontsLoaded(fonts) {
+	return new Promise(res => {
+		const check = () => {
+			let loaded = Array.from(document.fonts).map(x => x.family);
+			loaded = loaded.filter((f, p) => loaded.indexOf(f) === p);
+			if (fonts.every(f => loaded.includes(f))) {
+				logger.log("All fonts are loaded!");
+				res();
+				return true;
+			}
+		}
+
+		if (check()) return;
+
+		document.fonts.onloadingdone = () => check() && (document.fonts.onloadingdone = null);
+	})
 }
 
 function isTouchDevice() {
@@ -41,4 +61,4 @@ function getPageData(key) {
 	}
 }
 
-export { ready, isTouchDevice, savePageData, getPageData };
+export { ready, fontsLoaded, isTouchDevice, savePageData, getPageData };

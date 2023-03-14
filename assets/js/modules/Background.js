@@ -209,11 +209,11 @@ function onDeviceOrientation(event) {
 }
 
 
-function runCanvas(snow_mode) {
-	SNOW_MODE = snow_mode;
-
-	canvas = document.querySelector("canvas"),
+function runCanvas(_canvas, _SNOW_MODE) {
+	SNOW_MODE = _SNOW_MODE;
+	canvas = _canvas;
 	context = canvas.getContext("2d");
+
 	generate();
 	resize();
 	step();

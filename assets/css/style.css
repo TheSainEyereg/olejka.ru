@@ -1,3 +1,6 @@
+@import url(https://fonts.olejka.ru/Ubuntu.css); /* Default font */
+@import url(https://fonts.olejka.ru/VK-Sans-Display.css); /* Russian h1-h5 on some pages */
+
 :root {
 	/*Constant variables*/
 	--trsnsition: .3s;
@@ -25,7 +28,7 @@ html, body{
 	scroll-behavior: smooth;
 	transition: .25s;
 }
-body.onOverlay {overflow: hidden}
+body.onLoading {overflow: hidden}
 
 body.light {
 	--first-color: var(--light);
@@ -86,7 +89,6 @@ h1, h2, h3 {
 	left: 0%;
 	top: 50%;
 	transform: translateX(-50%) translateY(-50%);
-	animation: scale forwards .4s .6s ease-in;
 }
 .overlay svg path {
 	stroke-dasharray: 1600;
@@ -97,8 +99,15 @@ h1, h2, h3 {
 	stroke-linecap:unset;
 	stroke-linejoin:round;
 	stroke-miterlimit:10;
+}
+
+.overlay.animate .box {
+	animation: scale forwards .4s .6s ease-in;
+}
+.overlay.animate svg path {
 	animation: blink forwards .5s ease-in;
 }
+
 @keyframes unscale {
 	from {width: var(--overlay-final);}
 	to {width: 30%;}
@@ -138,7 +147,7 @@ main {
 	justify-content: center;
 	align-items: center;
 }
-body.onOverlay main {display: none;}
+body.onLoading main {opacity: 0;}
 
 main h1 {margin: 10px 0;}
 main .links {display: flex;}
@@ -179,10 +188,6 @@ footer {
 	border-radius: 5px;
 	transition: .25s;
 }
-.btn:active {
-	background-color: var(--second-color);
-	color: var(--first-color);
-}
 
 
 @media (hover: hover) { /* For non-mobile devices */
@@ -192,6 +197,13 @@ footer {
 	}
 
 	.btn:hover {
+		background-color: var(--second-color);
+		color: var(--first-color);
+	}
+}
+
+@media (hover: none) {    
+	.btn:active {
 		background-color: var(--second-color);
 		color: var(--first-color);
 	}
