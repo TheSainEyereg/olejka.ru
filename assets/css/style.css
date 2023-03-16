@@ -150,14 +150,16 @@ main {
 body.onLoading main {opacity: 0;}
 
 main h1 {margin: 10px 0;}
-main .links {display: flex;}
+main .links {
+	display: flex;
+	gap: 12px;
+}
 main .links a {
 	/*padding: 10px;*/
 	border-radius: 50%;
 	font-size: 16pt;
 	width: 60px;
 	height: 60px;
-	margin-right: 12px;
 	text-decoration: none;
 	display: flex;
 	justify-content: center;
@@ -165,7 +167,6 @@ main .links a {
 	color: var(--second-color);
 	transition: .25s;
 }
-main .links a:last-child {margin-right: 0;}
 main .links a:active {
 	background-color: var(--second-color);
 	color: var(--first-color);
@@ -215,9 +216,9 @@ footer {
     h1, h2, h3 {font-size: 40pt;}
 	footer {font-size: 13px;}
 	main h1 {margin: 9px 0;}
+	main .links {gap: 10px;}
 	main .links a {
 		font-size: 14pt;
-		margin-right: 10px;
 		width: 50px;
 		height: 50px;
 	}
@@ -227,9 +228,9 @@ footer {
     h1, h2, h3 {font-size: 30pt;}
 	footer {font-size: 12px;}
 	main h1 {margin: 8px 0;}
+	main .links {gap: 8px;}
 	main .links a {
 		font-size: 12pt;
-		margin-right: 8px;
 		width: 40px;
 		height: 40px;
 	}
