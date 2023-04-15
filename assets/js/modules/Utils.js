@@ -13,7 +13,7 @@ async function ready() {
 	})
 }
 
-async function fontsLoaded(fonts) {
+function fontsLoaded(fonts) {
 	return new Promise(res => {
 		const check = () => {
 			let loaded = Array.from(document.fonts).map(x => x.family);
@@ -23,11 +23,11 @@ async function fontsLoaded(fonts) {
 				res();
 				return true;
 			}
+
+			setTimeout(check, 100);
 		}
-
-		if (check()) return;
-
-		document.fonts.onloadingdone = () => check() && (document.fonts.onloadingdone = null);
+		
+		check();
 	})
 }
 
