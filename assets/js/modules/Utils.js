@@ -16,7 +16,7 @@ async function ready() {
 function fontsLoaded(fonts) {
 	return new Promise(res => {
 		const check = () => {
-			let loaded = Array.from(document.fonts).map(x => x.family);
+			let loaded = Array.from(document.fonts).map(x => x.family.replace(/"/g, ""));
 			loaded = loaded.filter((f, p) => loaded.indexOf(f) === p);
 			if (fonts.every(f => loaded.includes(f))) {
 				logger.log("All fonts are loaded!");
