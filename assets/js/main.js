@@ -5,7 +5,7 @@ import { runCanvas } from "./modules/Background.js";
 import { startHandling } from "./modules/Cursor.js";
 
 
-const fonts = ["VK Sans Display", "Ubuntu", "Font Awesome 6 Brands", "Font Awesome 6 Free"];
+const fonts = ["VK Sans Display", "Ubuntu", "my-icons"];
 
 
 const logger = new Logger("Main");
