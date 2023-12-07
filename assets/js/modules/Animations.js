@@ -6,13 +6,13 @@ function textBrute(element, text, time) {
 	const chars = "@#$%&/\\|;";
 	let i = 0, string = "";
 	function render() {
-		if (i <= text.length) {
-			if (i === text.length) return element.textContent = string;
+		if (i < text.length) {
 			string += text[i];
 			element.textContent = string + chars[Math.floor(Math.random()*chars.length)];
 			setTimeout(render, delay);
 			i++;
 		}
+		if (i === text.length) element.textContent = string;
 	}
 	render();
 }
