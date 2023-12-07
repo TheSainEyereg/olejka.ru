@@ -1,18 +1,17 @@
 import Logger from "./Logger.js";
 const logger = new Logger("JS Animations")
 
-
-function textBrute(selector, text, time) {
+function textBrute(element, text, time) {
 	const delay = time / text.length;
-	const element = document.querySelector(selector);
 	const chars = "@#$%&/\\|;";
 	let i = 0, string = "";
 	function render() {
-		if (++i <= text.length) {
+		if (i <= text.length) {
 			if (i === text.length) return element.textContent = string;
 			string += text[i];
 			element.textContent = string + chars[Math.floor(Math.random()*chars.length)];
 			setTimeout(render, delay);
+			i++;
 		}
 	}
 	render();
