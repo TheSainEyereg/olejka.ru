@@ -28,7 +28,7 @@ html, body{
 	scroll-behavior: smooth;
 	transition: .25s;
 }
-body.onLoading {overflow: hidden}
+body.onLoading { overflow: hidden }
 
 body.light {
 	--first-color: var(--light);
@@ -39,14 +39,14 @@ body.dark {
 	--second-color: var(--light);
 }
 
-p {transition: .25s;}
+p { transition: .25s }
 table {
 	border-collapse: collapse;
 	width: 75%;
 }
-tr {padding: 2px;}
-svg {transition: .25s;}
-h1, h2, h3 footer{font-family: 'VK Sans Display';}
+tr { padding: 2px }
+svg { transition: .25s }
+h1, h2, h3 footer{ font-family: 'VK Sans Display' }
 h1, h2, h3 {
 	margin: 0;
 	font-size: 50pt;
@@ -116,7 +116,7 @@ h1, h2, h3 {
 	from {opacity: 1;}
 	to {opacity: 0;}
 }
-.overlay.final {animation: hide forwards .35s ease-in;}
+.overlay.final { animation: hide forwards .35s ease-in }
 .overlay.final .box {
 	width: var(--overlay-final);
 	left: 50%;
@@ -147,11 +147,15 @@ main {
 	justify-content: center;
 	align-items: center;
 }
-body.onLoading main {opacity: 0;}
+body.onLoading main { opacity: 0 }
 
-main h1 {margin: 10px 0;}
+main h1 { margin: 10px 0 }
 main .links {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	max-width: 500px;
 	gap: 12px;
 }
 main .links a {
@@ -212,11 +216,14 @@ footer {
 
 /* Stupid mobile adaptation */
 @media screen and (max-width: 900px) {
-    body {font-size: 12pt;}
-    h1, h2, h3 {font-size: 40pt;}
-	footer {font-size: 13px;}
-	main h1 {margin: 9px 0;}
-	main .links {gap: 10px;}
+    body { font-size: 12pt }
+    h1, h2, h3 { font-size: 40pt }
+	footer { font-size: 13px }
+	main h1 { margin: 9px 0 }
+	main .links {
+		max-width: 400px;
+		gap: 10px;
+	}
 	main .links a {
 		font-size: 14pt;
 		width: 50px;
@@ -224,11 +231,14 @@ footer {
 	}
 }
 @media screen and (max-width: 500px) {
-    body {font-size: 10pt;}
-    h1, h2, h3 {font-size: 30pt;}
-	footer {font-size: 12px;}
-	main h1 {margin: 8px 0;}
-	main .links {gap: 8px;}
+    body { font-size: 10pt }
+    h1, h2, h3 { font-size: 30pt }
+	footer { font-size: 12px }
+	main h1 { margin: 8px 0 }
+	main .links {
+		max-width: 300px;
+		gap: 8px;
+	}
 	main .links a {
 		font-size: 12pt;
 		width: 40px;

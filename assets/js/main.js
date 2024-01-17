@@ -13,10 +13,12 @@ const date = new Date()
 
 sessionStorage.setItem("lastPage", location.pathname);
 
-const footer = document.querySelector("footer"),
-	overlay = document.querySelector(".overlay");
+const
+	footer = document.querySelector("footer"),
+	overlay = document.querySelector(".overlay"),
+	links = document.querySelector(".links");
 
-footer.innerHTML = `&copy;Oleg Logvinov ${date.getFullYear()}`;
+footer.innerHTML = `&copy;Oleg Logvinov ${ date.getFullYear() }`;
 
 const removeOverlay = () => {
 	if (overlay) {
@@ -31,7 +33,13 @@ window.onload = _ => {
 	logger.log("Window loaded!");
 	document.body.classList.remove("onLoading");
 	overlay.classList.add("animate");
-	fontsLoaded(fonts).then(() => {
+	
+	const ready = fontsLoaded(fonts);
+	const social = fetch("https://api.olejka.ru/v3/social").then(res => res.json());
+
+	ready.then(async () => {
+		links.innerHTML = (await social).map(x => `<a class="ccircle" href="${x.url}" target="_blank"><i class="oi-${x.id}"></i></a>`).join(" ");
+
 		removeOverlay();
 		if (!isTouchDevice()) startHandling();
 	})
