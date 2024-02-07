@@ -16,7 +16,8 @@ sessionStorage.setItem("lastPage", location.pathname);
 const
 	footer = document.querySelector("footer"),
 	overlay = document.querySelector(".overlay"),
-	links = document.querySelector(".links");
+	links = document.querySelector(".links"),
+	canvas = document.querySelector("#dots");
 
 footer.innerHTML = `&copy;Oleg Logvinov ${ date.getFullYear() }`;
 
@@ -38,15 +39,13 @@ window.onload = _ => {
 	const social = fetch("https://api.olejka.ru/v3/social").then(res => res.json());
 
 	ready.then(async () => {
-		links.innerHTML = (await social).map(x => `<a class="ccircle" href="${x.url}" target="_blank"><i class="oi-${x.id}"></i></a>`).join(" ");
+		if (links) links.innerHTML = (await social).map(x => `<a class="ccircle" href="${x.url}" target="_blank"><i class="oi-${x.id}"></i></a>`).join(" ");
 
 		removeOverlay();
 		if (!isTouchDevice()) startHandling();
 	})
 }
 
-const canvas = document.querySelector("#dots");
 if (canvas) runCanvas(canvas, date.getMonth() < 2 || date.getMonth() == 11);
-
 
 window.changeTheme = changeTheme;
