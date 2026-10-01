@@ -25,7 +25,8 @@ function generate() {
 		stars.push({
 			x: 0,
 			y: 0,
-			z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)
+			z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE),
+			alpha: Math.random()
 		});
 	 }
 }
@@ -58,6 +59,7 @@ function recycleStar(star) {
 	}
 	
 	star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+	star.alpha = Math.random();
 
 	switch(direction) {
 		case "z":
@@ -147,7 +149,7 @@ function render() {
 				return "255, 255, 255,";
 			}
 		})(theme);
-		context.strokeStyle = "rgba("+color+(0.5 + 0.5*Math.random())+")";
+		context.strokeStyle = "rgba("+color+(0.5 + 0.5*star.alpha)+")";
 
 		context.beginPath();
 		context.moveTo(star.x, star.y);
